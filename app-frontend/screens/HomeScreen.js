@@ -12,6 +12,7 @@ import Header from "../Components/Header";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import SpinnerComponent from "../Components/SpinnerComponent";
+import Post from "../Components/Post";
 const HomeScreen = () => {
 	const screenWidth = Dimensions.get("window").width;
 	const [posts, setPost] = useState([]);
@@ -21,7 +22,6 @@ const HomeScreen = () => {
 		axios
 			.get(`https://crowdly-2.onrender.com/api/v1/user/all-post`)
 			.then((response) => {
-				console.log("RESPPNSE-------------", response.data.data);
 				setPost(response.data.data);
 				setLoading(false);
 			})
@@ -38,45 +38,7 @@ const HomeScreen = () => {
 					<SpinnerComponent />
 				) : (
 					<View>
-						{posts &&
-							posts.length > 0 &&
-							posts.map((post) => (
-								<View style={{ backgroundColor: "white" }}>
-									<View style={styles.postHeader}>
-										<Image
-											style={styles.thumb}
-											source={{
-												uri: post.image,
-											}}
-										/>
-										<Text style={styles.postImage}>{post.username}</Text>
-										<Button
-											style={styles.followBtn}
-											// onPress={onPressLearnMore}
-											title="Follow+"
-											// color="blue"
-											accessibilityLabel="Learn more about this purple button"
-										/>
-									</View>
-									<View>
-										<Image
-											style={{ width: screenWidth, height: 300 }}
-											source={{
-												uri: post.image,
-											}}
-										/>
-									</View>
-									<View style={styles.postActions}>
-										{post.like.length} Likes
-										<Ionicons style={styles.icons} name="heart-outline" />
-										<Ionicons style={styles.icons} name="chatbubble-outline" />
-									</View>
-									<View>
-										<Text>Liked by 400 peoples</Text>
-									</View>
-									<View style={styles.line} />
-								</View>
-							))}
+						<Post posts={posts} />
 					</View>
 				)}
 			</View>
