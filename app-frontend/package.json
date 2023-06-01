@@ -12,7 +12,12 @@
     "expo": "~48.0.18",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "0.71.8"
+    "react-dom": "^18.2.0",
+    "react-native": "0.71.8",
+    "react-native-paper": "^3.12.0",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-web": "~0.18.11",
+    "react-navigation-material-bottom-tabs": "^2.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
